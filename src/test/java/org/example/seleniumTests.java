@@ -1,6 +1,7 @@
 package org.example;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -79,6 +80,11 @@ public class seleniumTests {
 
         WebElement submitEditButton = driver.findElement(By.id("submit"));
         submitEditButton.click();
+
+        WebElement editedRecord = driver.findElement(By.cssSelector("div.rt-tbody .rt-tr-group:last-child"));
+        assertEquals("sedat2", editedRecord.findElement(By.cssSelector("div.rt-td:nth-child(1)")).getText(), "Ad doğrulandı.");
+        assertEquals("akkok2", editedRecord.findElement(By.cssSelector("div.rt-td:nth-child(2)")).getText(), "Soyad doğrulandı.");
+        assertEquals("60000", editedRecord.findElement(By.cssSelector("div.rt-td:nth-child(4)")).getText(), "Maaş doğrulandı.");
     }
 
     @AfterAll
