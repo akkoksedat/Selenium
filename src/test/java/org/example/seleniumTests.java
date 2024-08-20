@@ -23,13 +23,17 @@ public class seleniumTests {
     @Test
     public void testClickButton() {
         driver.get("https://demoqa.com/elements");
+
+
         WebElement buttonsMenu = driver.findElement(By.cssSelector("li#item-4"));
         buttonsMenu.click();
 
-        WebElement clickbutton = driver.findElement(By.cssSelector("#Orhsl"));
-        clickbutton.click();
 
-        WebElement message = driver.findElement(By.id("dynamicClickMessage"));
+        WebElement clickButton = driver.findElement(By.cssSelector("button#dynamicClickButton"));
+        clickButton.click();
+
+
+        WebElement message = driver.findElement(By.cssSelector("#dynamicClickMessage"));
         assertEquals("You have done a dynamic click", message.getText(), "Mesaj doğrulandı.");
     }
 
@@ -37,7 +41,7 @@ public class seleniumTests {
     public void testAddRecord() {
         driver.get("https://demoqa.com/webtables");
 
-        WebElement addButton = driver.findElement(By.id("addNewRecordButton"));
+        WebElement addButton = driver.findElement(By.cssSelector("button#addNewRecordButton"));
         addButton.click();
 
         WebElement firstNameInput = driver.findElement(By.cssSelector("input#firstName"));
@@ -58,13 +62,11 @@ public class seleniumTests {
         WebElement departmentInput = driver.findElement(By.cssSelector("input#department"));
         departmentInput.sendKeys("qa engineer");
 
-        WebElement submitButton = driver.findElement(By.id("submit"));
+        WebElement submitButton = driver.findElement(By.cssSelector("button#submit"));
         submitButton.click();
-
 
         WebElement editButton = driver.findElement(By.cssSelector("span[title='Edit']"));
         editButton.click();
-
 
         WebElement firstNameEdit = driver.findElement(By.cssSelector("input#firstName"));
         firstNameEdit.clear();
@@ -78,7 +80,7 @@ public class seleniumTests {
         salaryEdit.clear();
         salaryEdit.sendKeys("60000");
 
-        WebElement submitEditButton = driver.findElement(By.id("submit"));
+        WebElement submitEditButton = driver.findElement(By.cssSelector("button#submit"));
         submitEditButton.click();
 
         WebElement editedRecord = driver.findElement(By.cssSelector("div.rt-tbody .rt-tr-group:last-child"));
